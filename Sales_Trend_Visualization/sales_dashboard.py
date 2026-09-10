@@ -17,7 +17,11 @@ st.set_page_config(
 # LOAD DATA
 # ---------------------------------------
 
-df = pd.read_csv("sales_data.csv")
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+df = pd.read_csv(BASE_DIR / "sales_data.csv")
+
 
 df["Date"] = pd.to_datetime(df["Date"])
 df = df.sort_values("Date")
